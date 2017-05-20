@@ -3,10 +3,9 @@ package com.djm.tinder.recommendation;
 import java.util.Date;
 
 public class Recommendation {
-	private int distance;
-    private int connectionCount;
-    private String contentHash;
-    private int id;
+	private Long distance;
+    private int gender;
+    private String id;
     private Date birthDate;
     private String name;
 
@@ -14,41 +13,31 @@ public class Recommendation {
         return new Recommendation();
     }
 
-    public int getDistance() {
+    public Long getDistance() {
         return distance;
     }
 
-    public Recommendation setDistance(int distance) {
+    public Recommendation setDistance(Long distance) {
         this.distance = distance;
 
         return this;
     }
 
-    public int getConnectionCount() {
-        return connectionCount;
+    public int getGender() {
+        return gender;
     }
 
-    public Recommendation setConnectionCount(int connectionCount) {
-        this.connectionCount = connectionCount;
+    public Recommendation setGender(int gender) {
+        this.gender = gender;
 
         return this;
     }
 
-    public String getContentHash() {
-        return contentHash;
-    }
-
-    public Recommendation setContentHash(String contentHash) {
-        this.contentHash = contentHash;
-
-        return this;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public Recommendation setId(int id) {
+    public Recommendation setId(String id) {
         this.id = id;
 
         return this;
