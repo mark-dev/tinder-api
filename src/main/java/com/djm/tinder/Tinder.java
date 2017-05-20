@@ -2,9 +2,9 @@ package com.djm.tinder;
 
 import com.djm.tinder.auth.AuthRq;
 import com.djm.tinder.auth.AuthRs;
-import com.djm.tinder.http.AuthHttpClient;
+import com.djm.tinder.http.AuthenticatedHttpClient;
 import com.djm.tinder.http.HttpPostRq;
-import com.djm.tinder.http.HttpClient;
+import com.djm.tinder.http.AnonymousHttpClient;
 import com.djm.tinder.profile.Profile;
 import com.djm.tinder.profile.ProfileRq;
 import com.djm.tinder.profile.ProfileRs;
@@ -21,12 +21,12 @@ public class Tinder {
 
     public static final String BASE_URL = "https://api.gotinder.com";
 
-    private HttpClient httpClient;
-    private AuthHttpClient authHttpClient;
+    private AnonymousHttpClient anonymousHttpClient;
+    private AuthenticatedHttpClient authenticatedHttpClient;
 
     private Tinder(String facebookAccessToken) throws Exception {
-        httpClient = new HttpClient(new OkHttpClient());
-        authHttpClient = new AuthHttpClient(httpClient, getAccessToken(facebookAccessToken));
+        anonymousHttpClient = new AnonymousHttpClient(new OkHttpClient());
+        authenticatedHttpClient = new AuthenticatedHttpClient(anonymousHttpClient, getAccessToken(facebookAccessToken));
     }
 
     /**
@@ -48,7 +48,7 @@ public class Tinder {
      */
     public ArrayList<Recommendation> getRecommendations() throws Exception {
         RecommendationRs recommendationRs = new RecommendationRs(
-                authHttpClient.get(
+                authenticatedHttpClient.get(
                         new RecommendationRq(BASE_URL + RecommendationRq.URI)
                 )
         );
@@ -62,7 +62,7 @@ public class Tinder {
      * @return Profile
      */
     public Profile getProfile() throws Exception {
-        ProfileRs profileRs = new ProfileRs(authHttpClient.get(new ProfileRq(BASE_URL + ProfileRq.URI)));
+        ProfileRs profileRs = new ProfileRs(authenticatedHttpClient.get(new ProfileRq(BASE_URL + ProfileRq.URI)));
 
         return profileRs.getProfile();
     }
@@ -86,7 +86,7 @@ public class Tinder {
      */
     private String getAccessToken(String facebookAccessToken) throws Exception {
         HttpPostRq rq = new AuthRq(BASE_URL + AuthRq.URI, facebookAccessToken);
-        AuthRs authRs = new AuthRs(httpClient.post(rq));
+        AuthRs authRs = new AuthRs(anonymousHttpClient.post(rq));
 
         return authRs.getToken();
     }

@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AuthHttpClient implements Http {
-    private HttpClient http;
+public class AuthenticatedHttpClient implements HttpClient {
+    private AnonymousHttpClient http;
     private String token;
 
-    public AuthHttpClient(HttpClient http, String token) {
+    public AuthenticatedHttpClient(AnonymousHttpClient http, String token) {
         this.http = http;
         this.token = token;
     }
@@ -29,7 +29,7 @@ public class AuthHttpClient implements Http {
     }
 
     public String post(HttpPostRq rq) throws IOException {
-        RequestBody body = RequestBody.create(HttpClient.JSON, rq.getBody());
+        RequestBody body = RequestBody.create(AnonymousHttpClient.JSON, rq.getBody());
         Headers headersBuild = Headers.of(buildHeaders());
         Request req = new Request.Builder()
                 .url(rq.getUrl())
