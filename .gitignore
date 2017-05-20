@@ -1,0 +1,13 @@
+# intellij
+.idea/
+*.iml
+
+# maven stuff
+target/
+
+# conf stuff
+.env
+
+# osx stuff
+.DS_Store
+
