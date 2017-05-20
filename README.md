@@ -25,9 +25,9 @@ import com.djm.tinder.Recommendation;
 
 public class App {
     public static void main(String[] args) {
-        Tinder tinder = new Tinder("token");
+        Tinder tinder = Tinder.fromAccessToken("yourFacebookAccessTokenForTinderApp");
         ArrayList<Recommendation> recommendations = tinder.getRecommendations();
-        foreach (Recommendation rec : recommendations) {
+        for (Recommendation rec : recommendations) {
             User user = rec.getUser();
             tinder.message(user, "Hey");
         }

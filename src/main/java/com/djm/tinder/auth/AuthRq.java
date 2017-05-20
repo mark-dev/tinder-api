@@ -27,10 +27,4 @@ public class AuthRq implements HttpPostRq {
 
         return obj.toString();
     }
-
-    public HashMap<String, String> getHeaders() {
-        HashMap<String, String> headers = new HashMap<String, String>();
-
-        return headers;
-    }
 }
