@@ -2,9 +2,9 @@ package com.djm.tinder;
 
 import com.djm.tinder.auth.AuthRq;
 import com.djm.tinder.auth.AuthRs;
-import com.djm.tinder.http.AuthenticatedHttpClient;
-import com.djm.tinder.http.HttpPostRq;
-import com.djm.tinder.http.AnonymousHttpClient;
+import com.djm.tinder.http.client.AuthenticatedHttpClient;
+import com.djm.tinder.http.request.HttpPostRq;
+import com.djm.tinder.http.client.AnonymousHttpClient;
 import com.djm.tinder.profile.Profile;
 import com.djm.tinder.profile.ProfileRq;
 import com.djm.tinder.profile.ProfileRs;

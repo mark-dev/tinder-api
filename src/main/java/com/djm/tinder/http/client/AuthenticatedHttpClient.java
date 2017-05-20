@@ -1,5 +1,7 @@
-package com.djm.tinder.http;
+package com.djm.tinder.http.client;
 
+import com.djm.tinder.http.request.HttpGetRq;
+import com.djm.tinder.http.request.HttpPostRq;
 import okhttp3.Headers;
 import okhttp3.Request;
 import okhttp3.RequestBody;

@@ -1,6 +1,6 @@
 package com.djm.tinder.profile;
 
-import com.djm.tinder.http.HttpGetRq;
+import com.djm.tinder.http.request.HttpGetRq;
 
 public class ProfileRq implements HttpGetRq {
     public static final String URI = "/profile";

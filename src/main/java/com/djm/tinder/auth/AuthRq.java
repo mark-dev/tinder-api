@@ -1,9 +1,7 @@
 package com.djm.tinder.auth;
 
-import com.djm.tinder.http.HttpPostRq;
+import com.djm.tinder.http.request.HttpPostRq;
 import org.json.simple.JSONObject;
-
-import java.util.HashMap;
 
 public class AuthRq implements HttpPostRq {
 
