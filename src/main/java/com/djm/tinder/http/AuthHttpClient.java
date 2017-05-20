@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AuthHttpRq {
-    private HttpRq httpRq;
+public class AuthHttpClient {
+    private HttpClient httpClient;
     private String token;
 
-    public AuthHttpRq(HttpRq httpRq, String token) {
-        this.httpRq = httpRq;
+    public AuthHttpClient(HttpClient httpClient, String token) {
+        this.httpClient = httpClient;
         this.token = token;
     }
 
@@ -24,19 +24,19 @@ public class AuthHttpRq {
                 .url(rq.getUrl())
                 .headers(headersBuilder)
                 .build();
-        Response res = httpRq.getHttp().newCall(req).execute();
+        Response res = httpClient.getHttp().newCall(req).execute();
         return res.body().string();
     }
 
     public String post(HttpPostRq rq) throws IOException {
-        RequestBody body = RequestBody.create(HttpRq.JSON, rq.getBody());
+        RequestBody body = RequestBody.create(HttpClient.JSON, rq.getBody());
         Headers headersBuild = Headers.of(buildHeaders());
         Request req = new Request.Builder()
                 .url(rq.getUrl())
                 .post(body)
                 .headers(headersBuild)
                 .build();
-        Response res = httpRq.getHttp().newCall(req).execute();
+        Response res = httpClient.getHttp().newCall(req).execute();
         return res.body().string();
     }
 

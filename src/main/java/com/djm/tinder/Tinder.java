@@ -2,9 +2,12 @@ package com.djm.tinder;
 
 import com.djm.tinder.auth.AuthRq;
 import com.djm.tinder.auth.AuthRs;
-import com.djm.tinder.http.AuthHttpRq;
+import com.djm.tinder.http.AuthHttpClient;
 import com.djm.tinder.http.HttpPostRq;
-import com.djm.tinder.http.HttpRq;
+import com.djm.tinder.http.HttpClient;
+import com.djm.tinder.profile.Profile;
+import com.djm.tinder.profile.ProfileRq;
+import com.djm.tinder.profile.ProfileRs;
 import com.djm.tinder.recommendation.Recommendation;
 import com.djm.tinder.recommendation.RecommendationRq;
 import com.djm.tinder.recommendation.RecommendationRs;
@@ -18,12 +21,12 @@ public class Tinder {
 
     public static final String BASE_URL = "https://api.gotinder.com";
 
-    private HttpRq httpRq;
-    private AuthHttpRq authHttpRq;
+    private HttpClient httpClient;
+    private AuthHttpClient authHttpClient;
 
     private Tinder(String facebookAccessToken) throws Exception {
-        httpRq = new HttpRq(new OkHttpClient());
-        authHttpRq = new AuthHttpRq(httpRq, getAccessToken(facebookAccessToken));
+        httpClient = new HttpClient(new OkHttpClient());
+        authHttpClient = new AuthHttpClient(httpClient, getAccessToken(facebookAccessToken));
     }
 
     /**
@@ -45,7 +48,7 @@ public class Tinder {
      */
     public ArrayList<Recommendation> getRecommendations() throws Exception {
         RecommendationRs recommendationRs = new RecommendationRs(
-                authHttpRq.get(
+                authHttpClient.get(
                         new RecommendationRq(BASE_URL + RecommendationRq.URI)
                 )
         );
@@ -53,8 +56,15 @@ public class Tinder {
         return recommendationRs.getRecommendations();
     }
 
-    public User getUser() {
-        return new User();
+    /**
+     * Returns the user profile information and settings.
+     *
+     * @return Profile
+     */
+    public Profile getProfile() throws Exception {
+        ProfileRs profileRs = new ProfileRs(authHttpClient.get(new ProfileRq(BASE_URL + ProfileRq.URI)));
+
+        return profileRs.getProfile();
     }
 
     /**
@@ -76,7 +86,7 @@ public class Tinder {
      */
     private String getAccessToken(String facebookAccessToken) throws Exception {
         HttpPostRq rq = new AuthRq(BASE_URL + AuthRq.URI, facebookAccessToken);
-        AuthRs authRs = new AuthRs(httpRq.post(rq));
+        AuthRs authRs = new AuthRs(httpClient.post(rq));
 
         return authRs.getToken();
     }

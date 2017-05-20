@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HttpRq {
+public class HttpClient {
 
     public static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private OkHttpClient http;
 
-    public HttpRq(OkHttpClient http) {
+    public HttpClient(OkHttpClient http) {
         this.http = http;
     }
 
