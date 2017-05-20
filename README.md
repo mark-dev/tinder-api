@@ -8,7 +8,7 @@ You can use maven to install the package. Add this to your `pom.xml` file
 
 ```xml
 <dependency>
-  <groupId>com.djm.tinder</groupId>
+  <groupId>com.djm</groupId>
   <artifactId>tinder</artifactId>
   <version>1.0.0</version>
 </dependency>
@@ -20,8 +20,8 @@ This is an example on how you want to use it
 
 ```java
 
-import djm.tinder.Tinder;
-import djm.tinder.recommendation.Recommendation;
+import Tinder;
+import Recommendation;
 
 public class App {
     public static void main(String[] args) {

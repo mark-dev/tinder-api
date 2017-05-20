@@ -1,10 +1,10 @@
-package djm.tinder;
+package com.djm.tinder;
 
-import djm.tinder.auth.AuthRq;
-import djm.tinder.http.HttpRq;
-import djm.tinder.recommendation.Recommendation;
-import djm.tinder.recommendation.RecommendationRq;
-import djm.tinder.user.User;
+import com.djm.tinder.auth.AuthRq;
+import com.djm.tinder.http.HttpRq;
+import com.djm.tinder.recommendation.Recommendation;
+import com.djm.tinder.recommendation.RecommendationRq;
+import com.djm.tinder.user.User;
 
 import okhttp3.*;
 import org.json.simple.JSONObject;

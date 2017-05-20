@@ -1,6 +1,6 @@
-package djm.tinder.auth;
+package com.djm.tinder.auth;
 
-import djm.tinder.http.HttpPostRq;
+import com.djm.tinder.http.HttpPostRq;
 import org.json.simple.JSONObject;
 
 import java.util.HashMap;

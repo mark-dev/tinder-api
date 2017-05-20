@@ -1,6 +1,6 @@
-package djm.tinder.recommendation;
+package com.djm.tinder.recommendation;
 
-import djm.tinder.http.HttpGetRq;
+import com.djm.tinder.http.HttpGetRq;
 
 public class RecommendationRq implements HttpGetRq {
     public static final String URI = "/recs/core";

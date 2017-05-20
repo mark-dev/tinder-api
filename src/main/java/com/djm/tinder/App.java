@@ -1,4 +1,4 @@
-package djm.tinder;
+package com.djm.tinder;
 
 public class App {
 

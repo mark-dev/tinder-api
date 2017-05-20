@@ -1,4 +1,4 @@
-package djm.tinder.http;
+package com.djm.tinder.http;
 
 public interface HttpGetRq {
     String getUrl();
