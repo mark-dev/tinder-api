@@ -20,8 +20,8 @@ This is an example on how you want to use it
 
 ```java
 
-import Tinder;
-import Recommendation;
+import com.djm.tinder.Tinder;
+import com.djm.tinder.Recommendation;
 
 public class App {
     public static void main(String[] args) {
