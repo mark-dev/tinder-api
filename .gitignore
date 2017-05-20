@@ -11,3 +11,6 @@ target/
 # osx stuff
 .DS_Store
 
+# test app
+src/main/java/com/djm/tinder/App.java
+
