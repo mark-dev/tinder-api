@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AuthHttpClient {
-    private HttpClient httpClient;
+public class AuthHttpClient implements Http {
+    private HttpClient http;
     private String token;
 
-    public AuthHttpClient(HttpClient httpClient, String token) {
-        this.httpClient = httpClient;
+    public AuthHttpClient(HttpClient http, String token) {
+        this.http = http;
         this.token = token;
     }
 
@@ -24,7 +24,7 @@ public class AuthHttpClient {
                 .url(rq.getUrl())
                 .headers(headersBuilder)
                 .build();
-        Response res = httpClient.getHttp().newCall(req).execute();
+        Response res = http.getHttp().newCall(req).execute();
         return res.body().string();
     }
 
@@ -36,7 +36,7 @@ public class AuthHttpClient {
                 .post(body)
                 .headers(headersBuild)
                 .build();
-        Response res = httpClient.getHttp().newCall(req).execute();
+        Response res = http.getHttp().newCall(req).execute();
         return res.body().string();
     }
 
