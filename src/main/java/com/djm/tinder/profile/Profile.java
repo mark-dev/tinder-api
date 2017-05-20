@@ -164,4 +164,8 @@ public class Profile {
         this.username = username;
         return this;
     }
+
+    public static Profile Builder() {
+        return new Profile();
+    }
 }
