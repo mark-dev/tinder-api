@@ -46,8 +46,8 @@ If you are smart enough, you can find it here [https://www.facebook.com/v2.6/dia
 
 #### Documentation
 
-Documentation is not winter, it will be coming soon
+Documentation is kinda like winter, it will be coming soon
 
 #### License
 
-This software is licenced under the [Beerware License](https://fedoraproject.org/wiki/Licensing/Beerware). Check [License.txt](License.txt) file
+This software is licenced under the [Beerware License](https://fedoraproject.org/wiki/Licensing/Beerware). For more insights, please check [LICENSE](LICENSE) file
