@@ -5,6 +5,7 @@ import com.djm.tinder.auth.AuthRs;
 import com.djm.tinder.http.client.AuthenticatedHttpClient;
 import com.djm.tinder.http.request.HttpPostRq;
 import com.djm.tinder.http.client.AnonymousHttpClient;
+import com.djm.tinder.objects.Token;
 import com.djm.tinder.profile.Profile;
 import com.djm.tinder.profile.ProfileRq;
 import com.djm.tinder.profile.ProfileRs;
@@ -16,6 +17,7 @@ import com.djm.tinder.user.User;
 import okhttp3.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tinder {
 
@@ -46,7 +48,7 @@ public class Tinder {
      * @return recommendations
      * @throws Exception
      */
-    public ArrayList<Recommendation> getRecommendations() throws Exception {
+    public List<Recommendation> getRecommendations() throws Exception {
         RecommendationRs recommendationRs = new RecommendationRs(
                 authenticatedHttpClient.get(
                         new RecommendationRq(BASE_URL + RecommendationRq.URI)
@@ -84,8 +86,8 @@ public class Tinder {
      * @return accessToken
      * @throws Exception
      */
-    private String getAccessToken(String facebookAccessToken) throws Exception {
-        HttpPostRq rq = new AuthRq(BASE_URL + AuthRq.URI, facebookAccessToken);
+    private Token getAccessToken(String facebookAccessToken) throws Exception {
+        HttpPostRq rq = new AuthRq(BASE_URL + AuthRq.URI, new Token(facebookAccessToken));
         AuthRs authRs = new AuthRs(anonymousHttpClient.post(rq));
 
         return authRs.getToken();

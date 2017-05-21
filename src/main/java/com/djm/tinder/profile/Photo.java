@@ -1,13 +1,14 @@
 package com.djm.tinder.profile;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Photo {
     private String fileName;
     private String id;
     private String fbId;
     private String extension;
-    private ArrayList<ProcessedPhoto> processedPhotos;
+    private List<ProcessedPhoto> processedPhotos;
     private double selectRate;
     private double successRate;
     private String url;
@@ -48,7 +49,7 @@ public class Photo {
         return this;
     }
 
-    public ArrayList<ProcessedPhoto> getProcessedPhotos() {
+    public List<ProcessedPhoto> getProcessedPhotos() {
         return processedPhotos;
     }
 

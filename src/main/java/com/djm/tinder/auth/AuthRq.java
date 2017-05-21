@@ -1,16 +1,18 @@
 package com.djm.tinder.auth;
 
 import com.djm.tinder.http.request.HttpPostRq;
-import org.json.simple.JSONObject;
+import com.djm.tinder.objects.Token;
+import com.google.gson.Gson;
 
 public class AuthRq implements HttpPostRq {
 
     public static final String URI = "/v2/auth";
 
     private String url;
-    private String token;
+    private Token token;
+    private Gson gson = new Gson();
 
-    public AuthRq(String url, String token) {
+    public AuthRq(String url, Token token) {
         this.url = url;
         this.token = token;
     }
@@ -20,9 +22,6 @@ public class AuthRq implements HttpPostRq {
     }
 
     public String getBody() {
-        JSONObject obj = new JSONObject();
-        obj.put("token", token);
-
-        return obj.toString();
+        return gson.toJson(token);
     }
 }

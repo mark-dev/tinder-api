@@ -2,20 +2,20 @@ package com.djm.tinder.http.client;
 
 import com.djm.tinder.http.request.HttpGetRq;
 import com.djm.tinder.http.request.HttpPostRq;
+import com.djm.tinder.objects.Token;
 import okhttp3.Headers;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AuthenticatedHttpClient implements HttpClient {
     private AnonymousHttpClient http;
-    private String token;
+    private Token token;
 
-    public AuthenticatedHttpClient(AnonymousHttpClient http, String token) {
+    public AuthenticatedHttpClient(AnonymousHttpClient http, Token token) {
         this.http = http;
         this.token = token;
     }
@@ -45,9 +45,9 @@ public class AuthenticatedHttpClient implements HttpClient {
     private Map<String, String> buildHeaders() {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("User-Agent", "Tinder/6.9.1 (iPhone; iOS 10.2; Scale/2.00)");
-        headers.put("X-Auth-Token", token);
+        headers.put("X-Auth-Token", token.getToken());
         headers.put("Host", "api.gotinder.com");
-        headers.put("Authorization", String.format("Token token=\"%s\"", token));
+        headers.put("Authorization", String.format("Token token=\"%s\"", token.getToken()));
 
         return headers;
     }
