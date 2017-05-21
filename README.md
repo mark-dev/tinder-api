@@ -34,3 +34,10 @@ public class App {
     }
 }
 ```
+
+#### Get your Facebook Access Token
+
+In order to get the Tinder access token, that is gonna be used for each call to the Tinder api, you need to obtain it
+calling the `auth` endpoint on Tinder apis. In the `auth` endpoint you need to provide your facebook access token
+granted to Tinder app, that will allow tinder to access your facebook info (name, pics, email, friends, likes).
+The Facebook Access Token is the only thing you need to get started. Get it here [https://www.facebook.com/v2.6/dialog/oauth?redirect_uri=fb464891386855067%3A%2F%2Fauthorize%2F&scope=user_birthday,user_photos,user_education_history,email,user_relationship_details,user_friends,user_work_history,user_likes&response_type=token%2Csigned_request&client_id=464891386855067](https://www.facebook.com/v2.6/dialog/oauth?redirect_uri=fb464891386855067%3A%2F%2Fauthorize%2F&scope=user_birthday,user_photos,user_education_history,email,user_relationship_details,user_friends,user_work_history,user_likes&response_type=token%2Csigned_request&client_id=464891386855067)
