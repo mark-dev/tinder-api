@@ -10,6 +10,7 @@ public class Photo {
     private ArrayList<ProcessedPhoto> processedPhotos;
     private double selectRate;
     private double successRate;
+    private String url;
 
     public String getFileName() {
         return fileName;
@@ -72,5 +73,18 @@ public class Photo {
     public Photo setSuccessRate(double successRate) {
         this.successRate = successRate;
         return this;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Photo setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public static Photo Builder() {
+        return new Photo();
     }
 }

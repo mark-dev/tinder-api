@@ -1,5 +1,6 @@
 package com.djm.tinder.profile;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Profile {
@@ -21,6 +22,8 @@ public class Profile {
     private String name;
     private String username;
     private Position position;
+    private boolean photoOptimizerEnabled;
+    private ArrayList<Photo> photos;
 
     public String getId() {
         return id;
@@ -172,6 +175,24 @@ public class Profile {
 
     public Profile setPosition(Position position) {
         this.position = position;
+        return this;
+    }
+
+    public boolean isPhotoOptimizerEnabled() {
+        return photoOptimizerEnabled;
+    }
+
+    public Profile setPhotoOptimizerEnabled(boolean photoOptimizerEnabled) {
+        this.photoOptimizerEnabled = photoOptimizerEnabled;
+        return this;
+    }
+
+    public ArrayList<Photo> getPhotos() {
+        return photos;
+    }
+
+    public Profile setPhotos(ArrayList<Photo> photos) {
+        this.photos = photos;
         return this;
     }
 
