@@ -20,6 +20,7 @@ public class Profile {
     private int genderFilter;
     private String name;
     private String username;
+    private Position position;
 
     public String getId() {
         return id;
@@ -162,6 +163,15 @@ public class Profile {
 
     public Profile setUsername(String username) {
         this.username = username;
+        return this;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public Profile setPosition(Position position) {
+        this.position = position;
         return this;
     }
 
