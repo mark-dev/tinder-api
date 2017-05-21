@@ -1,6 +1,8 @@
 ### An Unofficial Java implementation of tinder's HTTP API
 
-Hey, this is an unofficial Java implementation of tinder's HTTP API
+![travis_build](https://api.travis-ci.com/0x13a/tinder-api.svg)
+
+Hi, this is an unofficial Java implementation of tinder's HTTP API
 
 #### Installation
 
