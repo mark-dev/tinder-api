@@ -16,21 +16,37 @@ public class RecommendationRs {
         parser = new JSONParser();
     }
 
-    public ArrayList<Recommendation> getRecommendations() throws Exception {
+    public ArrayList<User> getRecommendations() throws Exception {
+        System.out.println(response);
         JSONObject jsonRes = (JSONObject) parser.parse(response);
         JSONArray results = (JSONArray) jsonRes.get("results");
-        ArrayList<Recommendation> recommendations = new ArrayList<Recommendation>();
+        ArrayList<User> users = new ArrayList<User>();
         for (int i = 0; i < results.size(); i++) {
             JSONObject item = (JSONObject) results.get(i);
-            Recommendation rec = Recommendation.Builder()
+            if (item.get("name") == "Tinder Team") {
+                throw new Exception("You reached your likes limit for today");
+            }
+            JSONArray jsonPhotos = (JSONArray) item.get("photos");
+            ArrayList<Photo> photos = new ArrayList<Photo>();
+            for (int j = 0; j < jsonPhotos.size(); j++) {
+                JSONObject jsonPhoto = (JSONObject) jsonPhotos.get(j);
+                Photo photo = Photo.Builder()
+                        .setId((String) jsonPhoto.get("id"))
+                        .setUrl((String) jsonPhoto.get("url"));
+                photos.add(photo);
+
+            }
+            User rec = User.Builder()
                     .setId((String) item.get("_id"))
                     .setBirthDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse((String) item.get("birth_date")))
                     .setDistance((Long) item.get("distance_mi"))
                     .setName((String) item.get("name"))
+                    .setContentHash((String) item.get("content_hash"))
+                    .setPhotos(photos)
                     .setGender(Math.toIntExact((Long) item.get("gender")));
-            recommendations.add(rec);
+            users.add(rec);
         }
 
-        return recommendations;
+        return users;
     }
 }

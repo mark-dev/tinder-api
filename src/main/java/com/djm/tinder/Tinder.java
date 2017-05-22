@@ -5,13 +5,15 @@ import com.djm.tinder.auth.AuthRs;
 import com.djm.tinder.http.client.AuthenticatedHttpClient;
 import com.djm.tinder.http.request.HttpPostRq;
 import com.djm.tinder.http.client.AnonymousHttpClient;
+import com.djm.tinder.like.Like;
+import com.djm.tinder.like.LikeRq;
+import com.djm.tinder.like.LikeRs;
 import com.djm.tinder.profile.Profile;
 import com.djm.tinder.profile.ProfileRq;
 import com.djm.tinder.profile.ProfileRs;
-import com.djm.tinder.recommendation.Recommendation;
+import com.djm.tinder.recommendation.User;
 import com.djm.tinder.recommendation.RecommendationRq;
 import com.djm.tinder.recommendation.RecommendationRs;
-import com.djm.tinder.user.User;
 
 import okhttp3.*;
 
@@ -46,7 +48,7 @@ public class Tinder {
      * @return recommendations
      * @throws Exception
      */
-    public ArrayList<Recommendation> getRecommendations() throws Exception {
+    public ArrayList<User> getRecommendations() throws Exception {
         RecommendationRs recommendationRs = new RecommendationRs(
                 authenticatedHttpClient.get(
                         new RecommendationRq(BASE_URL + RecommendationRq.URI)
@@ -68,13 +70,24 @@ public class Tinder {
     }
 
     /**
-     * Likes a given user and returns a boolean if there was a match.
+     * Likes a given user and returns a Like object
      *
      * @param user
-     * @return match
+     * @return Like
      */
-    public boolean like(User user) {
-        return true;
+    public Like like(User user) throws Exception {
+        LikeRs likeRs = new LikeRs(
+                authenticatedHttpClient.get(
+                        new LikeRq(
+                            BASE_URL + LikeRq.URI,
+                            user.getId(),
+                            user.getContentHash(),
+                            user.getsNumber()
+                        )
+                )
+        );
+
+        return likeRs.getLike();
     }
 
     /**
