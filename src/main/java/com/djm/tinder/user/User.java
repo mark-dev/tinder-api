@@ -1,4 +1,4 @@
-package com.djm.tinder.recommendation;
+package com.djm.tinder.user;
 
 import java.util.ArrayList;
 import java.util.Date;

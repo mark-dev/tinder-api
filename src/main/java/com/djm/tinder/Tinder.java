@@ -11,7 +11,7 @@ import com.djm.tinder.like.LikeRs;
 import com.djm.tinder.profile.Profile;
 import com.djm.tinder.profile.ProfileRq;
 import com.djm.tinder.profile.ProfileRs;
-import com.djm.tinder.recommendation.User;
+import com.djm.tinder.user.User;
 import com.djm.tinder.recommendation.RecommendationRq;
 import com.djm.tinder.recommendation.RecommendationRs;
 

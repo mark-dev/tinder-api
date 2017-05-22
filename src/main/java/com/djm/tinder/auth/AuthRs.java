@@ -18,9 +18,12 @@ public class AuthRs {
     public String getToken() throws Exception {
         JSONObject jsonRes = (JSONObject) parser.parse(response);
         JSONObject tokenData = (JSONObject) jsonRes.get("data");
+        if (tokenData == null) {
+            throw new Exception("Unable to retrieve access token");
+        }
         String token = (String) tokenData.get(TOKEN_KEY);
         if (token == null) {
-            throw new Exception("unable to retrieve access token");
+            throw new Exception("Unable to retrieve access token");
         }
 
         return token;

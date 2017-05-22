@@ -1,5 +1,7 @@
 package com.djm.tinder.recommendation;
 
+import com.djm.tinder.user.Photo;
+import com.djm.tinder.user.User;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,7 +19,6 @@ public class RecommendationRs {
     }
 
     public ArrayList<User> getRecommendations() throws Exception {
-        System.out.println(response);
         JSONObject jsonRes = (JSONObject) parser.parse(response);
         JSONArray results = (JSONArray) jsonRes.get("results");
         ArrayList<User> users = new ArrayList<User>();

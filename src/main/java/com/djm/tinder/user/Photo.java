@@ -1,4 +1,4 @@
-package com.djm.tinder.recommendation;
+package com.djm.tinder.user;
 
 import com.djm.tinder.profile.ProcessedPhoto;
 

@@ -23,14 +23,18 @@ This is an example on how you want to use it
 ```java
 
 import com.djm.tinder.Tinder;
-import com.djm.tinder.Recommendation;
+import com.djm.tinder.user.User;
+import com.djm.tinder.like.Like;
 
 public class App {
     public static void main(String[] args) {
         Tinder tinder = Tinder.fromAccessToken("yourFacebookAccessTokenForTinderApp");
         ArrayList<User> users = tinder.getRecommendations();
         for (User user : users) {
-            tinder.message(user, "Hey");
+            Like like = tinder.like(user);
+            if (like.isMatch() == true) {
+                System.out.println("❤️");
+            }
         }
     }
 }
