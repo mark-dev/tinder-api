@@ -1,8 +1,8 @@
 package com.djm.tinder.like;
 
-import com.djm.tinder.http.request.HttpGetRq;
+import com.djm.tinder.http.request.HttpGetRequest;
 
-public class LikeRq implements HttpGetRq {
+public class LikeRequest implements HttpGetRequest {
     public static final String URI = "/like";
 
     private String url;
@@ -10,7 +10,7 @@ public class LikeRq implements HttpGetRq {
     private String contentHash;
     private String userSNumber;
 
-    public LikeRq(String url, String userId, String contentHash, String userSNumber) {
+    public LikeRequest(String url, String userId, String contentHash, String userSNumber) {
         this.url = url;
         this.userId = userId;
         this.contentHash = contentHash;

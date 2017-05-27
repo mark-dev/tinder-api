@@ -1,19 +1,19 @@
 package com.djm.tinder;
 
-import com.djm.tinder.auth.AuthRq;
-import com.djm.tinder.auth.AuthRs;
+import com.djm.tinder.auth.AuthRequest;
+import com.djm.tinder.auth.AuthResponse;
 import com.djm.tinder.http.client.AuthenticatedHttpClient;
-import com.djm.tinder.http.request.HttpPostRq;
+import com.djm.tinder.http.request.HttpPostRequest;
 import com.djm.tinder.http.client.AnonymousHttpClient;
 import com.djm.tinder.like.Like;
-import com.djm.tinder.like.LikeRq;
-import com.djm.tinder.like.LikeRs;
+import com.djm.tinder.like.LikeRequest;
+import com.djm.tinder.like.LikeResponse;
 import com.djm.tinder.profile.Profile;
-import com.djm.tinder.profile.ProfileRq;
-import com.djm.tinder.profile.ProfileRs;
+import com.djm.tinder.profile.ProfileRequest;
+import com.djm.tinder.profile.ProfileResponse;
 import com.djm.tinder.user.User;
-import com.djm.tinder.recommendation.RecommendationRq;
-import com.djm.tinder.recommendation.RecommendationRs;
+import com.djm.tinder.recommendation.RecommendationRequest;
+import com.djm.tinder.recommendation.RecommendationResponse;
 
 import okhttp3.*;
 
@@ -49,9 +49,9 @@ public class Tinder {
      * @throws Exception
      */
     public ArrayList<User> getRecommendations() throws Exception {
-        RecommendationRs recommendationRs = new RecommendationRs(
+        RecommendationResponse recommendationRs = new RecommendationResponse(
                 authenticatedHttpClient.get(
-                        new RecommendationRq(BASE_URL + RecommendationRq.URI)
+                        new RecommendationRequest(BASE_URL + RecommendationRequest.URI)
                 )
         );
 
@@ -64,7 +64,7 @@ public class Tinder {
      * @return Profile
      */
     public Profile getProfile() throws Exception {
-        ProfileRs profileRs = new ProfileRs(authenticatedHttpClient.get(new ProfileRq(BASE_URL + ProfileRq.URI)));
+        ProfileResponse profileRs = new ProfileResponse(authenticatedHttpClient.get(new ProfileRequest(BASE_URL + ProfileRequest.URI)));
 
         return profileRs.getProfile();
     }
@@ -76,10 +76,10 @@ public class Tinder {
      * @return Like
      */
     public Like like(User user) throws Exception {
-        LikeRs likeRs = new LikeRs(
+        LikeResponse likeRs = new LikeResponse(
                 authenticatedHttpClient.get(
-                        new LikeRq(
-                            BASE_URL + LikeRq.URI,
+                        new LikeRequest(
+                            BASE_URL + LikeRequest.URI,
                             user.getId(),
                             user.getContentHash(),
                             user.getsNumber()
@@ -98,8 +98,8 @@ public class Tinder {
      * @throws Exception
      */
     private String getAccessToken(String facebookAccessToken) throws Exception {
-        HttpPostRq rq = new AuthRq(BASE_URL + AuthRq.URI, facebookAccessToken);
-        AuthRs authRs = new AuthRs(anonymousHttpClient.post(rq));
+        HttpPostRequest rq = new AuthRequest(BASE_URL + AuthRequest.URI, facebookAccessToken);
+        AuthResponse authRs = new AuthResponse(anonymousHttpClient.post(rq));
 
         return authRs.getToken();
     }

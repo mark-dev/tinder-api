@@ -9,11 +9,11 @@ import org.json.simple.parser.JSONParser;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class RecommendationRs {
+public class RecommendationResponse {
     private String response;
     private JSONParser parser;
 
-    public RecommendationRs(String res) {
+    public RecommendationResponse(String res) {
         response = res;
         parser = new JSONParser();
     }

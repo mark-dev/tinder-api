@@ -1,16 +1,16 @@
 package com.djm.tinder.auth;
 
-import com.djm.tinder.http.request.HttpPostRq;
+import com.djm.tinder.http.request.HttpPostRequest;
 import org.json.simple.JSONObject;
 
-public class AuthRq implements HttpPostRq {
+public class AuthRequest implements HttpPostRequest {
 
     public static final String URI = "/v2/auth";
 
     private String url;
     private String token;
 
-    public AuthRq(String url, String token) {
+    public AuthRequest(String url, String token) {
         this.url = url;
         this.token = token;
     }

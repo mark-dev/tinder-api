@@ -1,5 +1,6 @@
 package com.djm.tinder.http.request;
 
-public interface HttpGetRq {
+public interface HttpPostRequest {
     String getUrl();
+    String getBody();
 }

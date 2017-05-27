@@ -1,7 +1,7 @@
 package com.djm.tinder.http.client;
 
-import com.djm.tinder.http.request.HttpGetRq;
-import com.djm.tinder.http.request.HttpPostRq;
+import com.djm.tinder.http.request.HttpGetRequest;
+import com.djm.tinder.http.request.HttpPostRequest;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class AnonymousHttpClient implements HttpClient {
         this.http = http;
     }
 
-    public String post(HttpPostRq rq) throws IOException {
+    public String post(HttpPostRequest rq) throws IOException {
         RequestBody body = RequestBody.create(JSON, rq.getBody());
         Request req = new Request.Builder()
                 .url(rq.getUrl())
@@ -26,7 +26,7 @@ public class AnonymousHttpClient implements HttpClient {
         return res.body().string();
     }
 
-    public String get(HttpGetRq rq) throws IOException {
+    public String get(HttpGetRequest rq) throws IOException {
         Request req = new Request.Builder()
                 .url(rq.getUrl())
                 .build();

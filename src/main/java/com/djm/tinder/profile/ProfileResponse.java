@@ -9,11 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ProfileRs {
+public class ProfileResponse {
     private String response;
     private JSONParser parser;
 
-    public ProfileRs(String res) {
+    public ProfileResponse(String res) {
         response = res;
         parser = new JSONParser();
     }

@@ -1,11 +1,11 @@
 package com.djm.tinder.http.client;
 
-import com.djm.tinder.http.request.HttpGetRq;
-import com.djm.tinder.http.request.HttpPostRq;
+import com.djm.tinder.http.request.HttpGetRequest;
+import com.djm.tinder.http.request.HttpPostRequest;
 
 import java.io.IOException;
 
 public interface HttpClient {
-    String post(HttpPostRq httpPostRq) throws IOException;
-    String get(HttpGetRq httpGetRq) throws IOException;
+    String post(HttpPostRequest httpPostRq) throws IOException;
+    String get(HttpGetRequest httpGetRq) throws IOException;
 }

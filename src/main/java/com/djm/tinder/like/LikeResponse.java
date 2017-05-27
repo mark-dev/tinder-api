@@ -3,11 +3,11 @@ package com.djm.tinder.like;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class LikeRs {
+public class LikeResponse {
     private JSONParser parser;
     private String response;
 
-    public LikeRs(String res) {
+    public LikeResponse(String res) {
         response = res;
         parser = new JSONParser();
     }
