@@ -51,7 +51,7 @@ If you are smart enough, you can find it here [https://www.facebook.com/v2.6/dia
 
 #### Documentation
 
-You can check [javadoc](docs)
+You can check [javadoc](https://0x13a.github.io/tinder-api/)
 
 #### License
 
