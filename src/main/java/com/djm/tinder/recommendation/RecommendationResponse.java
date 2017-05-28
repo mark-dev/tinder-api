@@ -9,8 +9,20 @@ import org.json.simple.parser.JSONParser;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/**
+ * @author Diego Mariani
+ * @since 05-2017
+ */
 public class RecommendationResponse {
+
+    /**
+     * Recommendation's response as a string
+     */
     private String response;
+
+    /**
+     * JSONParser used to parse the json response
+     */
     private JSONParser parser;
 
     /**

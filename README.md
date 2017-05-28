@@ -51,7 +51,7 @@ If you are smart enough, you can find it here [https://www.facebook.com/v2.6/dia
 
 #### Documentation
 
-Documentation is kinda like winter, it will be coming soon
+You can check [javadoc](docs)
 
 #### License
 
