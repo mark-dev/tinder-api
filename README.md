@@ -28,13 +28,19 @@ import com.djm.tinder.like.Like;
 
 public class App {
     public static void main(String[] args) {
-        Tinder tinder = Tinder.fromAccessToken("yourFacebookAccessTokenForTinderApp");
-        ArrayList<User> users = tinder.getRecommendations();
-        for (User user : users) {
-            Like like = tinder.like(user);
-            if (like.isMatch() == true) {
-                System.out.println(String.format("Matched with %s!", user.getName()));
+        try {
+            final Tinder tinder = Tinder.fromAccessToken("yourFacebookAccessTokenForTinderApp");
+            final ArrayList<User> users = tinder.getRecommendations();
+            for (User user : users) {
+                Like like = tinder.like(user);
+                if (like.isMatch() == true) {
+                    System.out.println(String.format("Matched with %s!", user.getName()));
+                }
             }
+            Profile profile = tinder.getProfile();
+            System.out.println(String.format("About me: %s", profile.getName()));
+        } catch (AuthenticationException e) {
+            System.out.println("Whoops, unable to authenticate to the tinder API. Check your Facebook access token / app's permissions.");
         }
     }
 }
