@@ -14,22 +14,42 @@ import java.util.Date;
  * @since 05-2017
  */
 public class ProfileResponse {
+
+    /**
+     * Profile's response as a string
+     */
     private String response;
+
+    /**
+     * JSONParser used to parse the json response
+     */
     private JSONParser parser;
 
-    public ProfileResponse(String res) {
-        response = res;
+    /**
+     * ProfileResponse constructor. Accepts the response to be parsed as String.
+     * @param response
+     */
+    public ProfileResponse(String response) {
+        this.response = response;
         parser = new JSONParser();
     }
 
-    public Profile getProfile() throws Exception {
-        JSONObject jsonRes = (JSONObject) parser.parse(response);
-        JSONObject jsonPos = (JSONObject) jsonRes.get("pos");
-        Position pos = Position.Builder()
-                .setLat((Double) jsonPos.get("lat"))
-                .setLon((Double) jsonPos.get("lon"))
-                .setLastRecordedAt(new Date((new Timestamp((Long) jsonPos.get("at"))).getTime()));
-        JSONArray jsonPhotos = (JSONArray) jsonRes.get("photos");
+    /**
+     * Return your tinder profile settings.
+     *
+     * @see com.djm.tinder.profile.Profile
+     * @return Profile Profile settings object
+     * @throws org.json.simple.parser.ParseException on invalid json response
+     * @throws java.text.ParseException on invalid date format
+     */
+    public Profile getProfile() throws java.text.ParseException, org.json.simple.parser.ParseException {
+        JSONObject jsonResponse = (JSONObject) parser.parse(response);
+        JSONObject jsonPosition = (JSONObject) jsonResponse.get("pos");
+        Position position = Position.Builder()
+                .setLat((Double) jsonPosition.get("lat"))
+                .setLon((Double) jsonPosition.get("lon"))
+                .setLastRecordedAt(new Date((new Timestamp((Long) jsonPosition.get("at"))).getTime()));
+        JSONArray jsonPhotos = (JSONArray) jsonResponse.get("photos");
         ArrayList<Photo> photos = new ArrayList<Photo>();
         for (int i = 0; i < jsonPhotos.size(); i++) {
             JSONObject jsonPhoto = (JSONObject) jsonPhotos.get(i);
@@ -42,20 +62,20 @@ public class ProfileResponse {
             photos.add(photo);
         }
         return Profile.Builder()
-                .setName((String) jsonRes.get("name"))
-                .setAgeFilterMax(Math.toIntExact((Long) jsonRes.get("age_filter_max")))
-                .setAgeFilterMin(Math.toIntExact((Long) jsonRes.get("age_filter_min")))
-                .setId((String) jsonRes.get("_id"))
-                .setBio((String) jsonRes.get("bio"))
-                .setBirthDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse((String) jsonRes.get("birth_date")))
-                .setCreateDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse((String) jsonRes.get("create_date")))
-                .setBlend((String) jsonRes.get("blend"))
-                .setCanCreateSquad((Boolean) jsonRes.get("can_create_squad"))
-                .setDiscoverable((Boolean) jsonRes.get("discoverable"))
-                .setDistanceFilter(Math.toIntExact((Long) jsonRes.get("distance_filter")))
-                .setFacebookId((String) jsonRes.get("facebook_id"))
-                .setPhotoOptimizerEnabled((Boolean) jsonRes.get("photo_optimizer_enabled"))
-                .setPosition(pos)
+                .setName((String) jsonResponse.get("name"))
+                .setAgeFilterMax(Math.toIntExact((Long) jsonResponse.get("age_filter_max")))
+                .setAgeFilterMin(Math.toIntExact((Long) jsonResponse.get("age_filter_min")))
+                .setId((String) jsonResponse.get("_id"))
+                .setBio((String) jsonResponse.get("bio"))
+                .setBirthDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse((String) jsonResponse.get("birth_date")))
+                .setCreateDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse((String) jsonResponse.get("create_date")))
+                .setBlend((String) jsonResponse.get("blend"))
+                .setCanCreateSquad((Boolean) jsonResponse.get("can_create_squad"))
+                .setDiscoverable((Boolean) jsonResponse.get("discoverable"))
+                .setDistanceFilter(Math.toIntExact((Long) jsonResponse.get("distance_filter")))
+                .setFacebookId((String) jsonResponse.get("facebook_id"))
+                .setPhotoOptimizerEnabled((Boolean) jsonResponse.get("photo_optimizer_enabled"))
+                .setPosition(position)
                 .setPhotos(photos);
     }
 }

@@ -1,6 +1,11 @@
 package com.djm.tinder.like;
 
+/**
+ * @author Diego Mariani
+ * @since 05-2017
+ */
 public class Like {
+
     private boolean isMatch;
     private int likesRemaining;
     private int status;

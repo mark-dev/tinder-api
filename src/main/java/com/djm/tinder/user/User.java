@@ -85,7 +85,6 @@ public class User {
      */
     public User setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
-
         return this;
     }
 
@@ -150,7 +149,6 @@ public class User {
      */
     public User setName(String name) {
         this.name = name;
-
         return this;
     }
 }

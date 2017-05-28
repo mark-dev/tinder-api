@@ -26,10 +26,10 @@ public class RecommendationResponse {
     private JSONParser parser;
 
     /**
-     * @param res
+     * @param response
      */
-    public RecommendationResponse(String res) {
-        response = res;
+    public RecommendationResponse(String response) {
+        this.response = response;
         parser = new JSONParser();
     }
 
@@ -37,12 +37,13 @@ public class RecommendationResponse {
      * This method returns a list of users recommended by tinder api.
      * If you have finished your likes, you will get an empty list.
      *
-     * @return recommendations
-     * @throws Exception
+     * @return users as array list
+     * @throws org.json.simple.parser.ParseException on SimpleDate date format parsing is invalid
+     * @throws java.text.ParseException on json parsing if the json response is invalid
      */
-    public ArrayList<User> getRecommendations() throws Exception {
-        JSONObject jsonRes = (JSONObject) parser.parse(response);
-        JSONArray results = (JSONArray) jsonRes.get("results");
+    public ArrayList<User> getRecommendations() throws java.text.ParseException, org.json.simple.parser.ParseException {
+        JSONObject jsonResponse = (JSONObject) parser.parse(response);
+        JSONArray results = (JSONArray) jsonResponse.get("results");
         ArrayList<User> users = new ArrayList<User>();
         for (int i = 0; i < results.size(); i++) {
             JSONObject item = (JSONObject) results.get(i);
@@ -59,7 +60,7 @@ public class RecommendationResponse {
                 photos.add(photo);
 
             }
-            User rec = User.Builder()
+            User recommendedUser = User.Builder()
                     .setId((String) item.get("_id"))
                     .setBirthDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse((String) item.get("birth_date")))
                     .setDistance((Long) item.get("distance_mi"))
@@ -67,9 +68,8 @@ public class RecommendationResponse {
                     .setContentHash((String) item.get("content_hash"))
                     .setPhotos(photos)
                     .setGender(Math.toIntExact((Long) item.get("gender")));
-            users.add(rec);
+            users.add(recommendedUser);
         }
-
         return users;
     }
 }

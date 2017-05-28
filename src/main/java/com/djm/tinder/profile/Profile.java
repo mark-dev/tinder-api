@@ -38,6 +38,9 @@ public class Profile {
         return this;
     }
 
+    /**
+     * @return max age filter
+     */
     public int getAgeFilterMax() {
         return ageFilterMax;
     }
