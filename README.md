@@ -56,7 +56,7 @@ If you are smart enough, you can find it here [Facebook's Tinder App permission]
 
 ### Documentation
 
-You can check *javadoc* here [https://0x13a.github.io/tinder-api/](https://0x13a.github.io/tinder-api/)
+You can check **javadoc** here [https://0x13a.github.io/tinder-api/](https://0x13a.github.io/tinder-api/)
 
 ### License
 
