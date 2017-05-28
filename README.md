@@ -33,7 +33,7 @@ public class App {
         for (User user : users) {
             Like like = tinder.like(user);
             if (like.isMatch() == true) {
-                System.out.println("❤️");
+                System.out.println(String.format("Matched with %s!", user.getName()));
             }
         }
     }
