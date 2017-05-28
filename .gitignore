@@ -13,4 +13,5 @@ target/
 
 # test app
 src/main/java/com/djm/tinder/App.java
+docs/com/djm/tinder/App.html
 

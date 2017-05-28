@@ -4,6 +4,7 @@ com.djm.tinder.http.client
 com.djm.tinder.http.request
 com.djm.tinder.like
 com.djm.tinder.match
+com.djm.tinder.message
 com.djm.tinder.profile
 com.djm.tinder.recommendation
 com.djm.tinder.user
