@@ -1,6 +1,11 @@
 package com.djm.tinder.profile;
 
+/**
+ * @author Diego Mariani
+ * @since 05-2017
+ */
 public class ProcessedPhoto {
+
     private String url;
     private int width;
     private int height;

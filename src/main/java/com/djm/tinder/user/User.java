@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * @author Diego Mariani <diego.mariani@mail.com>
+ * @author Diego Mariani
  * @since 05-2017
  */
 public class User {

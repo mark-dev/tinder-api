@@ -3,6 +3,10 @@ package com.djm.tinder.profile;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author Diego Mariani
+ * @since 05-2017
+ */
 public class Profile {
 
     private String id;

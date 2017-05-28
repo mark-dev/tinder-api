@@ -19,6 +19,10 @@ import okhttp3.*;
 
 import java.util.ArrayList;
 
+/**
+ * @author Diego Mariani
+ * @since 05-2017
+ */
 public class Tinder {
 
     public static final String BASE_URL = "https://api.gotinder.com";

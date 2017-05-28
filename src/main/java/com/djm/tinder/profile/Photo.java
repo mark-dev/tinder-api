@@ -2,6 +2,10 @@ package com.djm.tinder.profile;
 
 import java.util.ArrayList;
 
+/**
+ * @author Diego Mariani
+ * @since 05-2017
+ */
 public class Photo {
     private String fileName;
     private String id;

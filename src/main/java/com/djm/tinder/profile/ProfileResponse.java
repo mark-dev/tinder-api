@@ -9,6 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author Diego Mariani
+ * @since 05-2017
+ */
 public class ProfileResponse {
     private String response;
     private JSONParser parser;
