@@ -22,9 +22,7 @@ This is an example on how you want to use it
 
 ```java
 
-import com.djm.tinder.Tinder;
-import com.djm.tinder.user.User;
-import com.djm.tinder.like.Like;
+import com.djm.tinder.*;
 
 public class App {
     public static void main(String[] args) {
@@ -58,7 +56,7 @@ If you are smart enough, you can find it here [Facebook's Tinder App permission]
 
 ### Documentation
 
-You can check [javadoc](https://0x13a.github.io/tinder-api/)
+You can check *javadoc* here [https://0x13a.github.io/tinder-api/](https://0x13a.github.io/tinder-api/)
 
 ### License
 
