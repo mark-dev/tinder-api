@@ -1,4 +1,4 @@
-## An Unofficial Java implementation of tinder's HTTP API
+## A Java implementation of tinder's HTTP API
 
 [![Build Status](https://travis-ci.org/0x13a/tinder-api.svg?branch=master)](https://travis-ci.org/0x13a/tinder-api)
 
