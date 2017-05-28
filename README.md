@@ -43,10 +43,11 @@ public class App {
 #### Get your Facebook Access Token
 
 In order to work, the Tinder java client (even your tinder app) needs an access token.
-This access Token is gonna be used in each call to the Tinder api. To obtain the Tinder access token we have to call the `gotinder.com/v2/auth` endpoint
+This access Token is gonna be used in each call to the Tinder api. To obtain the Tinder access token we have to call the `https://gotinder.com/v2/auth` endpoint
 where you need to provide your facebook access token
 granted to the Tinder app. This will allow tinder to access your facebook info (name, pics, email, friends, likes).
-The Facebook Access Token is the only thing you need to get started.
+
+The **Facebook Access Token** is the only thing you need to get started.
 If you are smart enough, you can find it here [https://www.facebook.com/v2.6/dialog/oauth?redirect_uri=fb464891386855067%3A%2F%2Fauthorize%2F&scope=user_birthday,user_photos,user_education_history,email,user_relationship_details,user_friends,user_work_history,user_likes&response_type=token%2Csigned_request&client_id=464891386855067](https://www.facebook.com/v2.6/dialog/oauth?redirect_uri=fb464891386855067%3A%2F%2Fauthorize%2F&scope=user_birthday,user_photos,user_education_history,email,user_relationship_details,user_friends,user_work_history,user_likes&response_type=token%2Csigned_request&client_id=464891386855067)
 
 #### Documentation
