@@ -13,11 +13,21 @@ public class RecommendationResponse {
     private String response;
     private JSONParser parser;
 
+    /**
+     * @param res
+     */
     public RecommendationResponse(String res) {
         response = res;
         parser = new JSONParser();
     }
 
+    /**
+     * This method returns a list of users recommended by tinder api.
+     * If you have finished your likes, you will get an empty list.
+     *
+     * @return recommendations
+     * @throws Exception
+     */
     public ArrayList<User> getRecommendations() throws Exception {
         JSONObject jsonRes = (JSONObject) parser.parse(response);
         JSONArray results = (JSONArray) jsonRes.get("results");
@@ -25,7 +35,7 @@ public class RecommendationResponse {
         for (int i = 0; i < results.size(); i++) {
             JSONObject item = (JSONObject) results.get(i);
             if (item.get("name") == "Tinder Team") {
-                throw new Exception("You reached your likes limit for today");
+                return new ArrayList<User>();
             }
             JSONArray jsonPhotos = (JSONArray) item.get("photos");
             ArrayList<Photo> photos = new ArrayList<Photo>();

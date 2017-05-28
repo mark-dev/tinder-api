@@ -4,6 +4,10 @@ import com.djm.tinder.profile.ProcessedPhoto;
 
 import java.util.ArrayList;
 
+/**
+ * @author Diego Mariani <diego.mariani@mail.com>
+ * @since 05-2017
+ */
 public class Photo {
     private String id;
     private String url;
