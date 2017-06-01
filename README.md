@@ -10,9 +10,9 @@ You can use maven to install the package. Add this to your `pom.xml` file
 
 ```xml
 <dependency>
-  <groupId>com.djm</groupId>
-  <artifactId>tinder</artifactId>
-  <version>1.0.0</version>
+  <groupId>com.github.0x13a</groupId>
+  <artifactId>tinder-api</artifactId>
+  <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -28,6 +28,8 @@ public class App {
     public static void main(String[] args) {
         try {
             final Tinder tinder = Tinder.fromAccessToken("yourFacebookAccessTokenForTinderApp");
+            Profile profile = tinder.getProfile();
+            System.out.println(String.format("About me: %s", profile.getName()));
             final ArrayList<User> users = tinder.getRecommendations();
             for (User user : users) {
                 Like like = tinder.like(user);
@@ -35,8 +37,6 @@ public class App {
                     System.out.println(String.format("Matched with %s!", user.getName()));
                 }
             }
-            Profile profile = tinder.getProfile();
-            System.out.println(String.format("About me: %s", profile.getName()));
         } catch (AuthenticationException e) {
             System.out.println("Whoops, unable to authenticate to the tinder API. Check your Facebook access token / app's permissions.");
         }
