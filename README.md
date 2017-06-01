@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/0x13a/tinder-api.svg?branch=master)](https://travis-ci.org/0x13a/tinder-api)
 
-This is an unofficial Java implementation of tinder's HTTP API. It's a http java client designed to be minimal and easy to use.
+A minimal and handy java sdk for tinder's HTTP API
 
 ### Getting started
 
@@ -71,7 +71,7 @@ public class App {
         try {
             final Tinder tinder = Tinder.fromAccessToken("AFD4C0jKqYf1y1NWeJzaZ8Vv0r4kNaXD");
             final ArrayList<User> users = tinder.getRecommendations();
-            Like like = tinder.like(user);
+            Like like = tinder.like(users.get(0));
             if (like.isMatch() == true) {
                 System.out.println(String.format("Matched with %s!", user.getName()));
             }
