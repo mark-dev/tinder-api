@@ -4,7 +4,7 @@
 
 This is an unofficial Java implementation of tinder's HTTP API. It's a http java client designed to be minimal and easy to use.
 
-### Installation
+### Getting started
 
 You can use maven to install the package. Add this to your `pom.xml` file
 
@@ -16,9 +16,11 @@ You can use maven to install the package. Add this to your `pom.xml` file
 </dependency>
 ```
 
-### Example
+### Quick guide
 
-This is an example on how you want to use it
+This is an example on how you want to use it. First you need to [retrieve your Facebook access token](#get-your-facebook-access-token) for the tinder app. Then you are ready to start.
+
+#### Getting profile information
 
 ```java
 
@@ -27,15 +29,29 @@ import com.djm.tinder.*;
 public class App {
     public static void main(String[] args) {
         try {
-            final Tinder tinder = Tinder.fromAccessToken("yourFacebookAccessTokenForTinderApp");
+            final Tinder tinder = Tinder.fromAccessToken("AFD4C0jKqYf1y1NWeJzaZ8Vv0r4kNaXD");
             Profile profile = tinder.getProfile();
             System.out.println(String.format("About me: %s", profile.getName()));
+        } catch (AuthenticationException e) {
+            System.out.println("Whoops, unable to authenticate to the tinder API. Check your Facebook access token / app's permissions.");
+        }
+    }
+}
+```
+
+#### Retrieve list of recommendations
+
+```java
+
+import com.djm.tinder.*;
+
+public class App {
+    public static void main(String[] args) {
+        try {
+            final Tinder tinder = Tinder.fromAccessToken("AFD4C0jKqYf1y1NWeJzaZ8Vv0r4kNaXD");
             final ArrayList<User> users = tinder.getRecommendations();
             for (User user : users) {
-                Like like = tinder.like(user);
-                if (like.isMatch() == true) {
-                    System.out.println(String.format("Matched with %s!", user.getName()));
-                }
+                System.out.println(String.format("See %s", user.getName()));
             }
         } catch (AuthenticationException e) {
             System.out.println("Whoops, unable to authenticate to the tinder API. Check your Facebook access token / app's permissions.");
@@ -43,6 +59,30 @@ public class App {
     }
 }
 ```
+
+#### Like user
+
+```java
+
+import com.djm.tinder.*;
+
+public class App {
+    public static void main(String[] args) {
+        try {
+            final Tinder tinder = Tinder.fromAccessToken("AFD4C0jKqYf1y1NWeJzaZ8Vv0r4kNaXD");
+            final ArrayList<User> users = tinder.getRecommendations();
+            Like like = tinder.like(user);
+            if (like.isMatch() == true) {
+                System.out.println(String.format("Matched with %s!", user.getName()));
+            }
+        } catch (AuthenticationException e) {
+            System.out.println("Whoops, unable to authenticate to the tinder API. Check your Facebook access token / app's permissions.");
+        }
+    }
+}
+```
+
+Many more to come. Check the api doc for more.
 
 ### Get your Facebook Access Token
 
