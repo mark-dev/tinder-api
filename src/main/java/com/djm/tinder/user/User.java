@@ -2,13 +2,14 @@ package com.djm.tinder.user;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author Diego Mariani
  * @since 05-2017
  */
 public class User {
-	private Long distance;
+    private Long distance;
     private int gender;
     private String id;
     private Date birthDate;
@@ -16,6 +17,7 @@ public class User {
     private String contentHash;
     private String sNumber;
     private ArrayList<Photo> photos;
+    private String bio;
 
     /**
      * @return User
@@ -150,5 +152,27 @@ public class User {
     public User setName(String name) {
         this.name = name;
         return this;
+    }
+
+    public User setBio(String bio) {
+        this.bio = bio;
+        return this;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id.equals(user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

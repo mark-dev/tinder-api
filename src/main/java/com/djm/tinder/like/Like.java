@@ -7,8 +7,8 @@ package com.djm.tinder.like;
 public class Like {
 
     private boolean isMatch;
-    private int likesRemaining;
     private int status;
+    private int likesRemaining;
 
     public boolean isMatch() {
         return isMatch;

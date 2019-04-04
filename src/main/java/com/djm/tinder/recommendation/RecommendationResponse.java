@@ -39,7 +39,7 @@ public class RecommendationResponse {
      *
      * @return users as array list
      * @throws org.json.simple.parser.ParseException on SimpleDate date format parsing is invalid
-     * @throws java.text.ParseException on json parsing if the json response is invalid
+     * @throws java.text.ParseException              on json parsing if the json response is invalid
      */
     public ArrayList<User> getRecommendations() throws java.text.ParseException, org.json.simple.parser.ParseException {
         JSONObject jsonResponse = (JSONObject) parser.parse(response);
@@ -67,7 +67,8 @@ public class RecommendationResponse {
                     .setName((String) item.get("name"))
                     .setContentHash((String) item.get("content_hash"))
                     .setPhotos(photos)
-                    .setGender(Math.toIntExact((Long) item.get("gender")));
+                    .setGender(Math.toIntExact((Long) item.get("gender")))
+                    .setBio((String) item.get("bio"));
             users.add(recommendedUser);
         }
         return users;
