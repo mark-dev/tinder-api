@@ -1,5 +1,7 @@
 package com.djm.tinder.recommendation;
 
+import com.djm.tinder.misc.RecsExhaustedException;
+import com.djm.tinder.misc.RecsTimeoutException;
 import com.djm.tinder.user.Photo;
 import com.djm.tinder.user.User;
 import org.json.simple.JSONArray;
@@ -43,6 +45,16 @@ public class RecommendationResponse {
      */
     public ArrayList<User> getRecommendations() throws java.text.ParseException, org.json.simple.parser.ParseException {
         JSONObject jsonResponse = (JSONObject) parser.parse(response);
+        String message = (String) jsonResponse.get("message");
+
+        //TODO: handle tinder's soft ban for 12h
+        if (message != null) {
+            if (message.equals("recs timeout"))
+                throw new RecsTimeoutException();
+            if (message.equals("recs exhausted"))
+                throw new RecsExhaustedException();
+        }
+
         JSONArray results = (JSONArray) jsonResponse.get("results");
         ArrayList<User> users = new ArrayList<User>();
         for (int i = 0; i < results.size(); i++) {
