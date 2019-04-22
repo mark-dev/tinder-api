@@ -2,6 +2,7 @@ package com.djm.tinder.user;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -18,6 +19,7 @@ public class User {
     private String sNumber;
     private ArrayList<Photo> photos;
     private String bio;
+    private Map<String, String> teasers;
 
     /**
      * @return User
@@ -163,6 +165,15 @@ public class User {
         return bio;
     }
 
+    public Map<String, String> getTeasers() {
+        return teasers;
+    }
+
+    public User setTeasers(Map<String, String> teaserMap) {
+        this.teasers = teaserMap;
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -175,4 +186,6 @@ public class User {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }

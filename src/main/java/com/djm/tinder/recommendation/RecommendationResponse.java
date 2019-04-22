@@ -10,6 +10,9 @@ import org.json.simple.parser.JSONParser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Diego Mariani
@@ -72,6 +75,18 @@ public class RecommendationResponse {
                 photos.add(photo);
 
             }
+
+            JSONArray teasers = (JSONArray) item.get("teasers");
+            Map<String, String> teaserMap;
+            if (!teasers.isEmpty()) {
+                teaserMap = new HashMap<>(teasers.size());
+                for (Object o : teasers) {
+                    JSONObject jsonObj = (JSONObject) o;
+                    teaserMap.put((String) jsonObj.get("type"), (String) jsonObj.get("string"));
+                }
+            } else {
+                teaserMap = Collections.emptyMap();
+            }
             User recommendedUser = User.Builder()
                     .setId((String) item.get("_id"))
                     .setBirthDate(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse((String) item.get("birth_date")))
@@ -80,6 +95,7 @@ public class RecommendationResponse {
                     .setContentHash((String) item.get("content_hash"))
                     .setPhotos(photos)
                     .setGender(Math.toIntExact((Long) item.get("gender")))
+                    .setTeasers(teaserMap)
                     .setBio((String) item.get("bio"));
             users.add(recommendedUser);
         }
