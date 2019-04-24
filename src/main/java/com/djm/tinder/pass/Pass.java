@@ -1,7 +1,5 @@
 package com.djm.tinder.pass;
 
-import com.djm.tinder.like.Like;
-
 public class Pass {
     private int status;
 
@@ -16,5 +14,12 @@ public class Pass {
 
     public static Pass Builder() {
         return new Pass();
+    }
+
+    @Override
+    public String toString() {
+        return "Pass{" +
+                "status=" + status +
+                '}';
     }
 }

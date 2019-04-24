@@ -40,4 +40,13 @@ public class Like {
     public static Like Builder() {
         return new Like();
     }
+
+    @Override
+    public String toString() {
+        return "Like{" +
+                "isMatch=" + isMatch +
+                ", status=" + status +
+                ", likesRemaining=" + likesRemaining +
+                '}';
+    }
 }

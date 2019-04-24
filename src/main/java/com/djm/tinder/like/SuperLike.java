@@ -47,4 +47,14 @@ public class SuperLike {
     public Instant getResetAt() {
         return resetAt;
     }
+
+    @Override
+    public String toString() {
+        return "SuperLike{" +
+                "limitExceeded=" + limitExceeded +
+                ", isMatch=" + isMatch +
+                ", status=" + status +
+                ", resetAt=" + resetAt +
+                '}';
+    }
 }
