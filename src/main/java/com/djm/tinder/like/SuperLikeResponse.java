@@ -33,13 +33,13 @@ public class SuperLikeResponse {
             superLike.setLimitExceeded(false);
         }
 
-        Boolean match = (Boolean) jsonObject.get("match");
-        if (match != null) {
-            superLike.setMatch(match);
-        } else {
-            superLike.setMatch(false);
-        }
+        Object match = jsonObject.get("match");
 
+        boolean isMatch = false;
+        if (match != null) {
+            isMatch = match instanceof Boolean ? (Boolean) match : true;
+        }
+        superLike.setMatch(isMatch);
 
         Object supedLikesInfo = jsonObject.get("super_likes");
         if (supedLikesInfo instanceof Map) {

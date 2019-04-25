@@ -14,7 +14,9 @@ public class LikeResponse {
 
     public Like getLike() throws Exception {
         JSONObject jsonObject = (JSONObject) parser.parse(response);
-        Boolean match = (Boolean) jsonObject.get("match");
+        //if like match JSONObject returned here
+        Object match = jsonObject.get("match");
+
         Long likesRemaining = (Long) jsonObject.get("likes_remaining");
         if (likesRemaining == null)
             likesRemaining = 0L;
@@ -22,10 +24,14 @@ public class LikeResponse {
         if (status == null) {
             status = 200L;
         }
+        boolean isMatch = false;
+        if (match != null) {
+            isMatch = match instanceof Boolean ? (Boolean) match : true;
+        }
         return Like.Builder()
                 .setLikesRemaining(likesRemaining.intValue())
                 .setStatus(status.intValue())
-                .setMatch(match != null ? match : false);
+                .setMatch(isMatch);
     }
 
 
